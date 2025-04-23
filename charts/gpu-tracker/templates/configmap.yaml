@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gpu-tracker-config
+  namespace: {{ .Release.Namespace }}
+data:
+  label_key: {{ .Values.labelConfig.key | quote }}
+  label_value: {{ .Values.labelConfig.value | quote }}
+  update_seconds: {{ .Values.updateSeconds.value | quote }}

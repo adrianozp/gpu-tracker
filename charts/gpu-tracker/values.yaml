@@ -1,0 +1,14 @@
+image:
+  repository: adrianozdp/gpu-node-operator
+  tag: v0.2.0
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+labelConfig:
+  key: node-type
+  value: gpu-node
+
+updateSeconds:
+  value: 30

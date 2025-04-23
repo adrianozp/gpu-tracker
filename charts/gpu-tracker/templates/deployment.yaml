@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-tracker-operator
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpu-tracker-operator
+  template:
+    metadata:
+      labels:
+        app: gpu-tracker-operator
+    spec:
+      serviceAccountName: gpu-tracker-sa
+      containers:
+        - name: operator
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: Always
+          env:
+            - name: LABEL_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: gpu-tracker-config
+                  key: label_key
+            - name: LABEL_VALUE
+              valueFrom:
+                configMapKeyRef:
+                  name: gpu-tracker-config
+                  key: label_value
+            - name: UPDATE_SECONDS
+              valueFrom:
+                configMapKeyRef:
+                  name: gpu-tracker-config
+                  key: update_seconds

@@ -1,0 +1,4 @@
+apiVersion: v2
+name: gpu-tracker
+version: 0.1.0
+description: A Kubernetes operator to track GPU nodes
