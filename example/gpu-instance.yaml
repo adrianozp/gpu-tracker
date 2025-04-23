@@ -1,0 +1,4 @@
+apiVersion: suse.tests.dev/v1
+kind: GPUTracker
+metadata:
+  name: suse-gpu-tracker
